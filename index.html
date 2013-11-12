@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="http://www.google.com/jsapi"></script>
+    <script src="javascripts/borkpaedia.js"></script>
+    <style type="text/css">
+      .chart {
+        display: inline-block;
+        height: 300px;
+        width: 49%;
+      }
+
+      #audience-by-genre {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Perkele Theatre Statistics</h1>
+
+    <div id="showings-by-year" class="chart"></div>
+    <div id="showings-by-genre" class="chart"></div>
+    <div id="audience-by-genre" class="chart"></div>
+
+    <script type="text/javascript">
+      google.load('visualization', '1.0', { 'packages': ['corechart'] });
+      google.setOnLoadCallback(function() {
+        $.getJSON(Borkpaedia.url).done(Borkpaedia.done).fail(Borkpaedia.fail);
+      });
+    </script>
+    <script src="javascripts/charts/audience_by_genre.js"></script>
+    <script src="javascripts/charts/showings_by_genre.js"></script>
+    <script src="javascripts/charts/showings_by_year.js"></script>
+  </body>
+</html>
